@@ -24,7 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <header className="w-full">
+      
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <header className="w-full">
         <div className="flex items-center">
           <div className="p-2 navHover">
             <h1 className="text-3xl">Spot-moi</h1>
@@ -41,9 +45,6 @@ export default function RootLayout({
           </div>
         </div>
       </header>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
         {children}
         <footer className="w-full">
           <div className="py-1">
