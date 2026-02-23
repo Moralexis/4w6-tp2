@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Artist } from "./_types/artist";
+import { useConnect } from "./_hooks/use-connect"
 
 export default function Home() {
 
@@ -10,19 +11,19 @@ export default function Home() {
   const [token, setToken] = useState();
   const [name, setName] = useState<string>("");
 
-  async function connect() {
+  //async function connect() {
 
     // Vous devez utiliser les identifiants "abc" et "123".
-    const response = await axios.post("http://localhost:5143/api/Users/Login", {
-      username: "abc",
-      password: "123"
-    });
-    console.log(response.data);
+   // const response = await axios.post("http://localhost:5143/api/Users/Login", {
+   //   username: "abc",
+   //   password: "123"
+    //});
+    //console.log(response.data);
 
-    setToken(response.data.token); // Le token peut-être rangé dans un état ...
-    localStorage.setItem("token", response.data.token) // ... ou dans le stockage local.
+    //(response.data.token); // Le token peut-être rangé dans un état ...
+   // localStorage.setItem("token", response.data.token) // ... ou dans le stockage local.
 
-  }
+  //}
 
   async function getArtist(name: string) {
 
@@ -55,7 +56,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    connect();
+    //connect();
+    useConnect();
     const artistJSON: string | null = localStorage.getItem("artist");
 
     if (artistJSON != null) setArtistList(JSON.parse(artistJSON));
@@ -74,8 +76,8 @@ export default function Home() {
           <h2 className="text-2xl font-bold">Vos artistes</h2>
           <div className="flex flex-wrap mt-2">
             {artistList.map((a) =>
-              <div className="basis-1/3">
-                <div key={a.name} className="m-1 p-1 artist">
+              <div key={a.name} className="basis-1/3">
+                <div className="m-1 p-1 artist">
                   <h4>{a.name}</h4>
                   <img src={a.imageUrl} alt={a.name} />
                   <a><button className="lightButton mt-1 mr-1">Concerts</button></a>
