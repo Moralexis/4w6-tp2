@@ -1,5 +1,11 @@
-import Image from "next/image";
+"use client"
+import { useEffect } from "react";
+import { useConnect } from "../_hooks/use-connect"
 
+useEffect(() => {
+    useConnect();
+  }, []);
+  
 export default function Home() {
   return (
     <main className="w-5xl mx-auto my-4">

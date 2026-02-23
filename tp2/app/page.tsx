@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Artist } from "./_types/artist";
 import { useConnect } from "./_hooks/use-connect"
+import { useRouter } from "next/navigation";
 
 export default function Home() {
 
@@ -10,20 +11,7 @@ export default function Home() {
   const [artistList, setArtistList] = useState<Artist[]>([]);
   const [token, setToken] = useState();
   const [name, setName] = useState<string>("");
-
-  //async function connect() {
-
-    // Vous devez utiliser les identifiants "abc" et "123".
-   // const response = await axios.post("http://localhost:5143/api/Users/Login", {
-   //   username: "abc",
-   //   password: "123"
-    //});
-    //console.log(response.data);
-
-    //(response.data.token); // Le token peut-être rangé dans un état ...
-   // localStorage.setItem("token", response.data.token) // ... ou dans le stockage local.
-
-  //}
+  const router = useRouter();
 
   async function getArtist(name: string) {
 
@@ -56,7 +44,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    //connect();
     useConnect();
     const artistJSON: string | null = localStorage.getItem("artist");
 
@@ -81,7 +68,7 @@ export default function Home() {
                   <h4>{a.name}</h4>
                   <img src={a.imageUrl} alt={a.name} />
                   <a><button className="lightButton mt-1 mr-1">Concerts</button></a>
-                  <a><button className="lightButton mt-1">Albums</button></a>
+                  <a><button onClick={() => router.push(`/album/${a.id}`)} className="lightButton mt-1">Albums</button></a>
                 </div>
               </div>
             )}
