@@ -68,7 +68,7 @@ export default function Home() {
                   <h4>{a.name}</h4>
                   <img src={a.imageUrl} alt={a.name} />
                   <a><button className="lightButton mt-1 mr-1">Concerts</button></a>
-                  <a><button onClick={() => router.push(`/album/${a.id}`)} className="lightButton mt-1">Albums</button></a>
+                  <a><button onClick={() => router.push(`/albums/${a.id}/${a.name}`)} className="lightButton mt-1">Albums</button></a>
                 </div>
               </div>
             )}
