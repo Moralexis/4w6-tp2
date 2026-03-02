@@ -12,7 +12,6 @@ export default function Home() {
 	const id = param.id;
 	const name = param.name
 	const [videoUrl, setVideoUrl] = useState<string | undefined>(undefined);
-	const [searchInput, setSearchInput] = useState("");
 
 	async function getSongs(albumId: string) {
 
