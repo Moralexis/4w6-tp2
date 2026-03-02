@@ -3,6 +3,7 @@
 import { Show } from "@/app/_types/show";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import axios from "axios";
+import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -13,6 +14,7 @@ export default function Home() {
   const zoom = 4;
   const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([])
   const [showList, setShowList] = useState<Show[]>([])
+  const t = useTranslations();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -74,7 +76,7 @@ export default function Home() {
 
   return (
     <main className="w-5xl mx-auto my-4">
-      <h2 className="text-center text-2xl py-1">Concerts de {name}</h2>
+      <h2 className="text-center text-2xl py-1">{t('Concerts.concertsOf', {name})}</h2>
       <div className="mx-auto w-2xl artist">
         {isLoaded &&
           <GoogleMap
@@ -89,7 +91,7 @@ export default function Home() {
       </div>
       <div className="flex m-3 flex-wrap">
         {showList.length == 0 &&
-        <div>Il a beaucoup de temps libre celui la 😝</div>
+        <div>{t('Concerts.noShows')}</div>
         }
         {showList.map(s =>
           <div key={`${s.id}`} className="basis-1/4">

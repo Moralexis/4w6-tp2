@@ -1,10 +1,11 @@
 "use client"
 import { useEffect, useState } from "react";
-import { useConnect } from "../../../_hooks/use-connect"
-import { Album } from "../../../_types/album";
+import { useConnect } from "../../../../../_hooks/use-connect"
+import { Album } from "../../../../../_types/album";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { Artist } from "@/app/_types/artist";
+import { useTranslations } from "next-intl";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
   const id = param.id;
   const name = decodeURIComponent(param.name)
   const router = useRouter();
+  const t = useTranslations();
 
 
   async function getAlbums(artistId: string) {
@@ -47,14 +49,14 @@ export default function Home() {
 
   return (
     <main className="w-5xl mx-auto mt-4">
-      <h2 className="text-center text-2xl py-1">Albums de {name}</h2>
+      <h2 className="text-center text-2xl py-1">{t('Albums.albumsOf', {name})}</h2>
       <div className="flex text-center m-3 flex-wrap">
         {albumList.map(a =>
           <div key={a.name} className="basis-1/4">
             <div className="m-1 text-center p-1 artist">
               <h4>{a.name}</h4>
               <img src={a.image} alt={a.name} />
-              <a><button onClick={() => router.push(`/chansons/${a.id}/${a.name}`)} className="lightButton mt-1">Chansons</button></a>
+              <a><button onClick={() => router.push(`/chansons/${a.id}/${a.name}`)} className="lightButton mt-1">{t('Albums.songsButton')}</button></a>
             </div>
           </div>
         )}

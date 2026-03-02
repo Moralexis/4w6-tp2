@@ -1,0 +1,24 @@
+{
+    "Home": {
+        "addArtist": "Ajouter un artiste",
+        "spotMe": "spot moi",
+        "search": "Rechercher",
+        "yourArtists": "Vos artistes",
+        "concertsButton": "Concerts",
+        "albumsButton": "Albums",
+        "clearFavorites": "Vider les favoris",
+        "yonk":"J'ai yoink le template de l'enseignant"
+    },
+    "Albums": {
+        "albumsOf": "Albums de {name}",
+        "songsButton": "Chansons"
+    },
+    "Concerts": {
+        "concertsOf": "Concerts de {name}",
+        "noShows": "Il a beaucoup de temps libre celui la 😝"
+    },
+    "Songs": {
+        "songsOf": "Chansons de {name}",
+        "listen": "Écouter"
+    }
+}

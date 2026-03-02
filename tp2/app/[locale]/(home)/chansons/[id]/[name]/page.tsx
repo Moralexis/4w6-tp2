@@ -1,8 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
-import { useConnect } from "../../../_hooks/use-connect"
+import { useConnect } from "../../../../../_hooks/use-connect"
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
 	const apiKey = "AIzaSyCdXEJDERdzW46faUuv9xhoKJbsMXyc7es";
@@ -12,6 +13,7 @@ export default function Home() {
 	const id = param.id;
 	const name = param.name
 	const [videoUrl, setVideoUrl] = useState<string | undefined>(undefined);
+	const t = useTranslations();
 
 	async function getSongs(albumId: string) {
 
@@ -49,13 +51,13 @@ export default function Home() {
 
 	return (
 		<main className="w-5xl mx-auto my-4">
-			<h2 className="text-center text-2xl py-1">Chansons de {name}</h2>
+			<h2 className="text-center text-2xl py-1">{t('Songs.songsOf', {name})}</h2>
 			<div className="flex m-2 flex-wrap">
 				{songsList.map(s =>
 					<div key={`${s}`} className="basis-1/5">
 						<div className="m-1 text-center p-1 artist">
 							<h4>{s}</h4>
-							<a><button onClick={() => searchVideo(s)} className="lightButton form-control mt-1">Écouter</button></a>
+							<a><button onClick={() => searchVideo(s)} className="lightButton form-control mt-1">{t('Songs.listen')}</button></a>
 						</div>
 					</div>
 				)}

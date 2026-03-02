@@ -1,0 +1,25 @@
+{
+    "Home": {
+        "addArtist": "Add an artist",
+        "spotMe": "spot me",
+        "placeholder": "e.g. Nana Mouskouri",
+        "search": "Search",
+        "yourArtists": "Your artists",
+        "concertsButton": "Concerts",
+        "albumsButton": "Albums",
+        "clearFavorites": "Clear favorites",
+        "yonk": "I yonk the teacher template"
+    },
+    "Albums": {
+        "albumsOf": "Albums of {name}",
+        "songsButton": "Songs"
+    },
+    "Concerts": {
+        "concertsOf": "Concerts of {name}",
+        "noShows": "He has a lot of time on his hands 😝"
+    },
+    "Songs": {
+        "songsOf": "Songs of {name}",
+        "listen": "Listen"
+    }
+}
