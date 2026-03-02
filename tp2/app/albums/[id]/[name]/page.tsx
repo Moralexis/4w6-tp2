@@ -12,7 +12,7 @@ export default function Home() {
   const [albumList, setAlbumList] = useState<Album[]>([]);
   const param = useParams<{ id: string, name: string }>();
   const id = param.id;
-  const name = param.name
+  const name = decodeURIComponent(param.name)
   const router = useRouter();
 
 

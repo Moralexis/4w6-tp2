@@ -53,7 +53,7 @@ export default function Home() {
 			<h2 className="text-center text-2xl py-1">Chansons de {name}</h2>
 			<div className="flex m-2 flex-wrap">
 				{songsList.map(s =>
-					<div className="basis-1/5">
+					<div key={`${s}`} className="basis-1/5">
 						<div className="m-1 text-center p-1 artist">
 							<h4>{s}</h4>
 							<a><button onClick={() => searchVideo(s)} className="lightButton form-control mt-1">Écouter</button></a>
@@ -68,7 +68,6 @@ export default function Home() {
 					<iframe width="560" height="315" src={videoUrl} title="YouTube video player"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-					<img src="images/video.png" alt="Vidéo youtube" />
 				</div>
 			}
 		</main>
